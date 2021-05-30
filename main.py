@@ -130,7 +130,7 @@ def telemetry(sid, data):
                         else:
                             pass
                     if 'i10' in labels:
-                        sendBack_Speed = -3
+                        sendBack_Speed = 10
 
                     SetStatusObjs.append(set(labels))
                     StatusBoxes.append(bboxes)
