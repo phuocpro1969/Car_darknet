@@ -82,7 +82,7 @@ class Rule():
             
             if 'i12' in self.objs_disappear:
                 self.clear_handle("i12")
-                self.update_run(flag='i12', tweakAngle=-25, speed=-2, time=32, prev_flag=None)
+                self.update_run(flag='i12', tweakAngle=-25, speed=20, time=26, prev_flag=None)
 
             if 'i13' in self.objs_disappear:
                 self.clear_handle("i13")
@@ -93,7 +93,7 @@ class Rule():
                     left, top, right, bottom = darknet.bbox2points(bbox_i5)
                     x_center = int(( left + right ) / 2 / 224 * 512)
                     if x_center > 200 and x_center < 412:
-                        angle= util.errorAngle((x_center + 38, 128))
+                        angle= util.errorAngle((x_center + 40, 128))
                         self.update_run(flag='i13', tweakAngle=angle, speed=15, time=20, prev_flag=None)
                 # else:
                 #     self.tweakAngle = 0
@@ -129,7 +129,7 @@ class Rule():
                     left, top, right, bottom = darknet.bbox2points(bbox_i5)
                     x_center = int(( left + right ) / 2 / 224 * 512)
                     if x_center > 150 and x_center < 462:
-                        angle = util.errorAngle((x_center + 65, 128))
+                        angle = util.errorAngle((x_center + 64, 128))
                         self.update_run(flag='p23', tweakAngle=angle, speed=10, time=30, prev_flag=None)
 
                 elif all(np.array(self.StatusLines[-3:]) < 1):
