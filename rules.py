@@ -129,6 +129,7 @@ class Rule():
                     left, top, right, bottom = darknet.bbox2points(bbox_i5)
                     x_center = int(( left + right ) / 2 / 224 * 512)
                     if x_center > 150 and x_center < 462:
+                        angle = util.errorAngle((x_center + 65, 128))
                         self.update_run(flag='p23', tweakAngle=angle, speed=10, time=30, prev_flag=None)
 
                 elif all(np.array(self.StatusLines[-3:]) < 1):
