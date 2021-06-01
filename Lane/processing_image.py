@@ -1,6 +1,4 @@
-import numpy as np
 import cv2
-import math
 from Lane.parameters import Parameters
 p = Parameters()
 
@@ -10,8 +8,3 @@ def warp_image(img):
     warped_img = cv2.warpPerspective(img, p.perspective_transform, image_size, flags=cv2.INTER_LINEAR)
 
     return warped_img
-
-
-
-
-################## find line avaiable ######################

@@ -35,20 +35,17 @@ class Rule():
         print(name)
         self.flag = False
         self.tweakAngle = None
-        self.speed = None 
-        self.prev_flag = None      
+        self.speed = None
+        self.prev_flag = None
 
     def get_result(self):
         return self.tweakAngle, self.speed
 
-    def handle(self):    
+    def handle(self):
         if self.flag is not False:
             print(self.StatusObjs, self.StatusLines, self.objs_disappear)
             if (all(np.array(self.StatusLines[-3:]) >= 2) and self.time < 10) or self.time <= 0:
-                print("stoped flag handle")
-                self.flag = False
-                self.tweakAngle = None
-                self.speed = None
+                self.clear_handle("stoped flag handle")
 
             if self.flag == 'i12':
                 if 'i5' in self.StatusObjs[-1]:
@@ -70,7 +67,7 @@ class Rule():
                     self.time = 20
                     self.prev_flag = None
                     self.update_run(flag=self.flag, tweakAngle=-25, speed=30, time=20, prev_flag=None)
-            
+
             self.time -= 1
             if self.prev_flag and self.time == 0:
                 self.prev_flag = None
@@ -79,14 +76,14 @@ class Rule():
             if 'i10' in self.objs_disappear:
                 self.clear_handle("i10")
                 self.update_run(flag='i10', tweakAngle=25, speed=30, time=28, prev_flag=None)
-            
+
             if 'i12' in self.objs_disappear:
                 self.clear_handle("i12")
                 self.update_run(flag='i12', tweakAngle=-25, speed=20, time=26, prev_flag=None)
 
             if 'i13' in self.objs_disappear:
                 self.clear_handle("i13")
-                self.flag = 'i13' 
+                self.flag = 'i13'
                 if 'i5' in self.StatusObjs[-1]:
                     index = list(self.StatusObjs[-1]).index('i5')
                     bbox_i5 = self.StatusBoxes[-1][index]
@@ -115,7 +112,7 @@ class Rule():
                 elif all(np.array(self.StatusLines[-3:]) < 1):
                     # left
                     self.update_run(flag='i13', tweakAngle=-25, speed=-2, time=30, prev_flag=None)
-                
+
                 else:
                     # right
                     self.update_run(flag='i13', tweakAngle=0, speed=30, time=17, prev_flag='p19')
@@ -133,4 +130,4 @@ class Rule():
                         self.update_run(flag='p23', tweakAngle=angle, speed=10, time=30, prev_flag=None)
 
                 elif all(np.array(self.StatusLines[-3:]) < 1):
-                    self.update_run(flag='p23', tweakAngle=25, speed=-2, time=30, prev_flag=None) 
+                    self.update_run(flag='p23', tweakAngle=25, speed=-2, time=30, prev_flag=None)

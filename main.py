@@ -96,6 +96,7 @@ def telemetry(sid, data):
                 fits = util.adjust_fits(fits)
                 
                 StatusLines.append(len(fits))
+
                 if len(StatusLines) > 8:
                     StatusLines = StatusLines[-8:]
                 
