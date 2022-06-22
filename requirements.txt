@@ -1,4 +1,4 @@
-numpy==1.19.2
+numpy==1.22.0
 click==7.1.2
 eventlet==0.29.0
 Flask==1.1.2
